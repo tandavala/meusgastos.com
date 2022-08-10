@@ -4,7 +4,7 @@ import { ValueObject } from "./valueObject";
 
 export class UuidBaseIdentity extends ValueObject {
   private _uuid: string;
-  private constructor(private uuid: string) {
+  protected constructor(private uuid?: string) {
     super();
     this._uuid = uuid;
   }
