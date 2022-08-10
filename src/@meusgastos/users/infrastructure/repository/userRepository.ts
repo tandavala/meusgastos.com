@@ -9,8 +9,26 @@ export class UserRepository implements IUserRepository {
   async ofId(userId: UserId): Promise<User> {
     const data = await Database("users")
       .where("uuid", userId.toString())
+      .where("is_deleted", 0)
       .first();
     if (data) {
+      console.log(data);
+      return this.hidrateUser(
+        data?.uuid,
+        data?.user_name,
+        data?.email,
+        data?.is_deleted
+      );
+    }
+    return;
+  }
+
+  async findToRestore(userId: UserId): Promise<User> {
+    const data = await Database("users")
+      .where("uuid", userId.toString())
+      .first();
+    if (data) {
+      console.log(data);
       return this.hidrateUser(
         data?.uuid,
         data?.user_name,
@@ -43,7 +61,7 @@ export class UserRepository implements IUserRepository {
   async update(user: User): Promise<User> {
     const data = await Database("users").where("uuid", user.getId()).update({
       user_name: user.getUserName(),
-      email: user.getEmailAddress,
+      email: user.getEmailAddress(),
       is_deleted: user.getIsDeleted(),
     });
     return user;

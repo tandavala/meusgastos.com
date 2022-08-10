@@ -22,6 +22,37 @@ export class UserService {
     return await this.userRepository.save(user);
   }
 
+  async find(id: string) {
+    const user = await this.userRepository.ofId(UserId.fromString(id));
+    if (!user) throw new DomainExecption("User does not exist");
+    user.retriveAndFlushDomainEvents();
+    return user;
+  }
+
+  async update(id: string, command: SignUpCommand) {
+    const user = User.create(
+      UserId.fromString(id),
+      UserName.pick(command.userName),
+      EmailAddress.pick(command.emailAddress)
+    );
+    //TODO: check if user exist
+    return await this.userRepository.update(user);
+  }
+
+  async softDelete(id: string) {
+    const user = await this.userRepository.ofId(UserId.fromString(id));
+    user.softDeleteUser();
+    await this.userRepository.update(user);
+    return user;
+  }
+
+  async restore(id: string) {
+    const user = await this.userRepository.findToRestore(UserId.fromString(id));
+    user.restoreAccount();
+    await this.userRepository.update(user);
+    return user;
+  }
+
   async checkAccountAlreadyExist(id: string, userName: string) {
     const accountById = await this.userRepository.ofId(UserId.fromString(id));
     const accountByName = await this.userRepository.ofUserName(
