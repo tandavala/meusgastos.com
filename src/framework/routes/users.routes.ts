@@ -1,5 +1,5 @@
 import { Application } from "express";
-import { UserController } from "../controllers/user.controller";
+import UserController from "../controllers/user.controller";
 
 const userRouter = (app: Application) => {
   app.post("/users", UserController.signUp);

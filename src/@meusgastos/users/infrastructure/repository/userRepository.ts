@@ -10,18 +10,26 @@ export class UserRepository implements IUserRepository {
     const data = await Database("users")
       .where("uuid", userId.toString())
       .first();
+    if (data) {
+      return this.hidrateUser(
+        data?.uuid,
+        data?.user_name,
+        data?.email,
+        data?.is_deleted
+      );
+    }
+    return;
+  }
+  async ofUserName(userName: UserName): Promise<User> {
+    const data = await Database("users")
+      .where("user_name", userName.__toString())
+      .first();
     return this.hidrateUser(
       data.uuid,
       data.user_name,
       data.email,
       data.is_deleted
     );
-  }
-  async ofUserName(userName: UserName): Promise<User> {
-    const data = await Database("users")
-      .where("user_name", userName.__toString())
-      .first();
-    return User.create(data.uuid, data.user_name, data.email, data.is_deleted);
   }
   async save(user: User): Promise<User> {
     await Database("users").insert({
