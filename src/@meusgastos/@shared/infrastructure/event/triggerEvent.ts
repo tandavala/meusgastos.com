@@ -1,8 +1,14 @@
+import IDomainEvent from "../../domain/event/domainEvent";
+
 export class TriggerEvents {
   private _domainEvents: any[] = [];
 
   public domainEvents(): any[] {
     return this._domainEvents;
+  }
+
+  public notifyDomainEvent(domainEvent: IDomainEvent) {
+    this._domainEvents.push(domainEvent);
   }
 
   public retriveAndFlushDomainEvents(): any[] {

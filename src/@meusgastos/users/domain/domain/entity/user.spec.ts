@@ -47,4 +47,16 @@ describe("User unit test", () => {
     expect(user.getUserName()).toBe("tandavala");
     expect(user.getEmailAddress()).toBe("jose.tandavala@gmail.com");
   });
+
+  it("should create domain event", () => {
+    const user = User.create(
+      UserId.fromString(uuid()),
+      UserName.pick("tandavala"),
+      EmailAddress.pick("jose.tandavala@gmail.com")
+    );
+
+    const events = user.retriveAndFlushDomainEvents();
+
+    expect(events.length).toBe(1);
+  });
 });
