@@ -59,4 +59,31 @@ describe("User unit test", () => {
 
     expect(events.length).toBe(1);
   });
+
+  it("should delete user account", () => {
+    const user = User.create(
+      UserId.fromUuid(uuid()),
+      UserName.pick("tandavala"),
+      EmailAddress.pick("jose.tandavala@gmail.com")
+    );
+
+    user.softDeleteUser();
+
+    expect(user.getEmailAddress()).toBe("jose.tandavala@gmail.com");
+    expect(user.getIsDeleted()).toBe(true);
+  });
+
+  it("should restore user account", () => {
+    const user = User.create(
+      UserId.fromUuid(uuid()),
+      UserName.pick("tandavala"),
+      EmailAddress.pick("jose.tandavala@gmail.com")
+    );
+
+    user.softDeleteUser(); // delete user account
+    user.restoreAccount(); // restore user account
+
+    expect(user.getEmailAddress()).toBe("jose.tandavala@gmail.com");
+    expect(user.getIsDeleted()).toBe(false);
+  });
 });

@@ -9,8 +9,14 @@ export class User extends TriggerEvents {
   private _uuid: string;
   public _userName: string;
   public _email: string;
+  public _isDeleted: boolean;
 
-  constructor(uuid: string, userName: string, email: string) {
+  constructor(
+    uuid: string,
+    userName: string,
+    email: string,
+    isDeleted = false
+  ) {
     super();
     this.setId(uuid);
     this.setUserName(userName);
@@ -22,12 +28,14 @@ export class User extends TriggerEvents {
   public static create(
     uuid: UserId,
     userName: UserName,
-    emailAddress: EmailAddress
+    emailAddress: EmailAddress,
+    isDeleted = false
   ) {
     return new User(
       uuid.toString(),
       userName.__toString(),
-      emailAddress.__toString()
+      emailAddress.__toString(),
+      isDeleted
     );
   }
 
@@ -63,5 +71,17 @@ export class User extends TriggerEvents {
 
   public getEmailAddress() {
     return this._email;
+  }
+
+  public getIsDeleted() {
+    return this._isDeleted;
+  }
+
+  public softDeleteUser() {
+    this._isDeleted = true;
+  }
+
+  public restoreAccount() {
+    this._isDeleted = false;
   }
 }

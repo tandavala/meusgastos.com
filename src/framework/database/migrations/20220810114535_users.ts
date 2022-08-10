@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string("uuid");
     table.string("user_name");
     table.string("email");
+    table.boolean("is_deleted").defaultTo(false);
     table.timestamps();
   });
 }
