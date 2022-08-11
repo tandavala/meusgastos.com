@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { SignUpCommand } from "../../@meusgastos/users/domain/service/signUpCommand";
-import { UserService } from "../../@meusgastos/users/domain/service/user.service";
+import { SignUpCommand } from "../../@meusgastos/users/service/signUpCommand";
 import { UserRepository } from "../../@meusgastos/users/infrastructure/repository/userRepository";
+import { UserService } from "../../@meusgastos/users/service/user.service";
 
 class UserController {
   async signUp(request: Request, response: Response) {
