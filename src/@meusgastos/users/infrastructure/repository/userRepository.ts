@@ -1,18 +1,16 @@
-import { User } from "../../domain/domain/entity/user";
-import { UserId } from "../../domain/domain/valueObject/userId";
-import { UserName } from "../../domain/domain/valueObject/userName";
-import { IUserRepository } from "../../domain/repository/userInterfaceRepository";
 import Database from "../../../../framework/database/config/knex";
-import { EmailAddress } from "../../domain/domain/valueObject/emailAddress";
+import { User } from "../../domain/entity/user";
+import { EmailAddress } from "../../domain/valueObject/emailAddress";
+import { UserId } from "../../domain/valueObject/userId";
+import { UserName } from "../../domain/valueObject/userName";
 
-export class UserRepository implements IUserRepository {
+export class UserRepository {
   async ofId(userId: UserId): Promise<User> {
     const data = await Database("users")
       .where("uuid", userId.toString())
       .where("is_deleted", 0)
       .first();
     if (data) {
-      console.log(data);
       return this.hidrateUser(
         data?.uuid,
         data?.user_name,

@@ -1,9 +1,9 @@
-import { DomainExecption } from "../../../@shared/domain/exception/domainException";
-import { UserRepository } from "../../infrastructure/repository/userRepository";
+import { DomainExecption } from "../../@shared/domain/exception/domainException";
 import { User } from "../domain/entity/user";
 import { EmailAddress } from "../domain/valueObject/emailAddress";
 import { UserId } from "../domain/valueObject/userId";
 import { UserName } from "../domain/valueObject/userName";
+import { UserRepository } from "../infrastructure/repository/userRepository";
 import { SignUpCommand } from "./signUpCommand";
 
 export class UserService {
