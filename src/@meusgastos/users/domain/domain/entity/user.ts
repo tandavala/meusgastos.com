@@ -7,11 +7,11 @@ import { UserName } from "../valueObject/userName";
 
 export class User extends TriggerEvents {
   private _uuid: string;
-  public _userName: string;
-  public _email: string;
-  public _isDeleted: boolean;
+  private _userName: string;
+  private _email: string;
+  private _isDeleted: boolean;
 
-  constructor(
+  private constructor(
     uuid: string,
     userName: string,
     email: string,

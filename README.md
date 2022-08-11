@@ -1,3 +1,5 @@
+### **ATENÇÃO:** em desenvolvimento
+
 # MeusGastos.com
 
 Meusgastos.com é um software de finanças pessoal, o objectivo principal deste software é gerir os gastos e pagamento de serviços. Este projecto foi preparado na sequencia do workshop organizado pela lispa.
