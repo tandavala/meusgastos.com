@@ -1,4 +1,4 @@
-### **ATENÇÃO:** em desenvolvimento
+##### **ATENÇÃO:** em desenvolvimento
 
 # MeusGastos.com
 
@@ -28,10 +28,10 @@ Meusgastos.com é um software de finanças pessoal, o objectivo principal deste 
 ### Como rodar o projeto
 
 - #1 - clonar o projecto na tua máquina local
-- #2 - instalar as dependecias via ```npm install````
-- #3 - vai naS pastas `framework -> database -> config` abre o ficheiro ```connection.ts adiciona os dados de conexão
-- #4 - para rodar os testes ```npm test````
-- #5 - para rodar o projecto ```npm run dev````
+- #2 - instalar as dependecias via `npm install`
+- #3 - vai naS pastas `framework -> database -> config` abre o ficheiro `connection.ts` adiciona os dados de conexão
+- #4 - para rodar os testes `npm test`
+- #5 - para rodar o projecto `npm run dev`
 
 ### Endpoints
 
