@@ -1,4 +1,4 @@
-##### **ATENÇÃO:** em desenvolvimento
+##### **ATENÇÃO:** este é o projecto prático do workshop sobre **DDD (Domain Driven Design)** que decorreu na [LISPA](https://lispa.ao/), o código fonte ainda está em desenvolvimento.
 
 # MeusGastos.com
 
