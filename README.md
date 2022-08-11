@@ -37,19 +37,26 @@ Meusgastos.com é um software de finanças pessoal, o objectivo principal deste 
 
 - #1 - POST: `http://127.0.0.1:8080/users`
 
-`````js
+```js
 BODY
 {
     "userName": "tandavala",
     "email": "jose.tandavala@gmail.com"
 }
 ```
-- #2 - GET: ```http://127.0.0.1:8080/users/d4c78874-6c50-42cc-b60f-6c5702aa945c```
-- #3 - PUT: ```http://127.0.0.1:8080/users/d4c78874-6c50-42cc-b60f-6c5702aa945c```
-````js
+
+- #2 - GET: `http://127.0.0.1:8080/users/d4c78874-6c50-42cc-b60f-6c5702aa945c`
+
+- #3 - PUT: `http://127.0.0.1:8080/users/d4c78874-6c50-42cc-b60f-6c5702aa945c`
+
+```js
 BODY
 {
     "userName": "tandavala",
     "email": "jose.tandavala@gmail.com"
 }
-`````
+```
+
+- #4 - DELETE: `http://127.0.0.1:8080/users/d4c78874-6c50-42cc-b60f-6c5702aa945c`
+
+- #5 - POST: `http://127.0.0.1:8080/users/d4c78874-6c50-42cc-b60f-6c5702aa945c/restore`
