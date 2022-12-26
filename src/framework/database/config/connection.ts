@@ -1,3 +1,4 @@
+// Ola mundo este é um comentário
 module.exports = {
   client: "mysql2",
   connection: {
