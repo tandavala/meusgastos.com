@@ -9,6 +9,10 @@ import { SignUpCommand } from "./signUpCommand";
 export class UserService {
   constructor(private userRepository: UserRepository) {}
 
+  async query() {
+    return await this.userRepository.listAll();
+  }
+
   async execute(command: SignUpCommand) {
     const id = UserId.nextIdentity();
 
@@ -18,7 +22,7 @@ export class UserService {
       EmailAddress.pick(command.emailAddress)
     );
 
-    await this.checkAccountAlreadyExist(id.toString(), user.getUserName());
+    //  await this.checkAccountAlreadyExist(id.toString(), user.getUserName());
     return await this.userRepository.save(user);
   }
 

@@ -2,6 +2,8 @@ import { Application } from "express";
 import UserController from "../controllers/user.controller";
 
 const userRouter = (app: Application) => {
+  app.get("/users", UserController.index);
+
   app.post("/users", UserController.signUp);
 
   app.get("/users/:id", UserController.show);

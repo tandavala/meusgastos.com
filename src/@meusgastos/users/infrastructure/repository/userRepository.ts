@@ -5,6 +5,9 @@ import { UserId } from "../../domain/valueObject/userId";
 import { UserName } from "../../domain/valueObject/userName";
 
 export class UserRepository {
+  async listAll() {
+    return await Database("users");
+  }
   async ofId(userId: UserId): Promise<User> {
     const data = await Database("users")
       .where("uuid", userId.toString())

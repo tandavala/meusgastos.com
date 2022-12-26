@@ -4,6 +4,11 @@ import { UserRepository } from "../../@meusgastos/users/infrastructure/repositor
 import { UserService } from "../../@meusgastos/users/service/user.service";
 
 class UserController {
+  async index(request: Request, response: Response) {
+    const userService = new UserService(new UserRepository());
+    const data = await userService.query();
+    return response.status(200).json({ data });
+  }
   async signUp(request: Request, response: Response) {
     const command = new SignUpCommand(request.body);
 
