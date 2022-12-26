@@ -1,4 +1,6 @@
-// Ola mundo este é um comentário
+require("dotenv").config({ path: "../../../../.env" });
+
+console.log(process.env.DB_USER);
 module.exports = {
   client: "mysql2",
   connection: {

@@ -4,7 +4,7 @@
     "build": "tsc -p .",
     "dev": "ts-node-dev  ./src/server.ts",
     "migration:make": "knex --knexfile ./src/framework/database/config/connection.ts migrate:make",
-    "migration:run": "knex --knexfile ./src/framework/database/config/connection.ts migrate:latest",
+    "migration:run": "NODE_ENV=development knex --knexfile ./src/framework/database/config/connection.ts migrate:latest",
     "test": "jest"
   },
   "devDependencies": {
